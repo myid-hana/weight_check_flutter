@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(MyApp());
 
@@ -86,7 +87,10 @@ class _WeightCheckState extends State<WeightCheck> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => WcResult(),
+                          builder: (context) => WcResult(
+//                            double.parse(_heightController.text.trim()), //문자열로 받은 값을 실수로 변환해주기.
+//                            double.parse(_WeightController.text.trim()),
+                          ),
                         ),
                       );
                     }
