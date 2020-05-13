@@ -88,8 +88,8 @@ class _WeightCheckState extends State<WeightCheck> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => WcResult(
-//                            double.parse(_heightController.text.trim()), //문자열로 받은 값을 실수로 변환해주기.
-//                            double.parse(_WeightController.text.trim()),
+                            double.parse(_heightController.text.trim()), //문자열로 받은 값을 실수로 변환해주기.
+                            double.parse(_weightController.text.trim()),
                           ),
                         ),
                       );
@@ -106,8 +106,39 @@ class _WeightCheckState extends State<WeightCheck> {
 }
 
 class WcResult extends StatelessWidget {
+
+  final double height;   //클래스 내에서 쓸 변수 선언
+  final double weight;
+
+  WcResult(this.height, this.weight);   //클래스 내에서 변수를 받는다.
+
+  String _calcBmi(double bmi){
+
+    var result = 'row Weight';
+
+    if(bmi >= 35){
+      result = 'Very High Weight';
+    } else if(35 > bmi && bmi >= 30){
+      result = 'Level 2 Weight';
+    } else if(30 > bmi && bmi >= 25){
+      result = 'Level 1 Weight';
+    } else if(25 > bmi && bmi >= 23){
+      result = 'Hight Weight';
+    } else if(23 > bmi && bmi >= 18.5){
+      result = 'Normal';
+    }
+    return result;
+  }
+
+  Widget _buildIcon(double bmi){
+    
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final bmi = weight / ((height/100) * (height/100));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Result'),
@@ -117,12 +148,12 @@ class WcResult extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Icon(
-              Icons.sentiment_very_dissatisfied,
-              color:Colors.red,
+              Icons.sentiment_very_satisfied,
+              color:Colors.lightGreen,
               size:100,
             ),
             Text(
-              'Normal',
+              _calcBmi(bmi),
               style: TextStyle(
                 fontSize: 36.0,
               ),
