@@ -24,6 +24,13 @@ class _WeightCheckState extends State<WeightCheck> {
 
   final _formKey = GlobalKey<FormState>();
   final _heightController = TextEditingController();
+  final _weightController = TextEditingController();
+
+  void dispose() {
+    _heightController.dispose();
+    _weightController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +58,7 @@ class _WeightCheckState extends State<WeightCheck> {
                   border: OutlineInputBorder(),
                   hintText:'Your Weight',
                 ),
+                controller: _weightController,
                 keyboardType: TextInputType.number,
               ),
 
