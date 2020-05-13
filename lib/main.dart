@@ -131,7 +131,25 @@ class WcResult extends StatelessWidget {
   }
 
   Widget _buildIcon(double bmi){
-    
+    if(bmi >= 23){
+      return Icon(
+        Icons.sentiment_dissatisfied,
+        color: Colors.redAccent,
+        size: 100,
+      );
+    } else if(23 > bmi && bmi >= 18.5){
+      return Icon(
+        Icons.sentiment_satisfied,
+        color: Colors.lightGreen,
+        size: 100,
+      );
+    } else if(bmi < 18.5){
+      return Icon(
+        Icons.sentiment_dissatisfied,
+        color: Colors.lightBlue,
+        size: 100,
+      );
+    }
   }
 
   @override
@@ -147,11 +165,7 @@ class WcResult extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              Icons.sentiment_very_satisfied,
-              color:Colors.lightGreen,
-              size:100,
-            ),
+            _buildIcon(bmi),
             Text(
               _calcBmi(bmi),
               style: TextStyle(
