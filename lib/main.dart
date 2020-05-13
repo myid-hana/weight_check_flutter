@@ -56,7 +56,7 @@ class _WeightCheckState extends State<WeightCheck> {
 
               Container(
                 alignment: Alignment.centerRight,
-                margin: const EdgeInsets.only(top: 10.0),   //margin: top
+                margin: const EdgeInsets.only(top: 20.0),   //margin: top
                 child: RaisedButton(
                   child: Text('Validation'),
                   onPressed: (){
