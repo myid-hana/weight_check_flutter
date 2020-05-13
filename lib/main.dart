@@ -48,7 +48,7 @@ class _WeightCheckState extends State<WeightCheck> {
                 validator: (value) {
                   // 입력값이 없으면 메시지 출력
                   if (value.isEmpty) {
-                    return 'Enter some text';
+                    return 'Enter your Height';
                   } else
                     return null;
                 },
@@ -61,6 +61,13 @@ class _WeightCheckState extends State<WeightCheck> {
               ),
               SizedBox(height:20.0),
               TextFormField(
+                validator: (value) {
+                  // 입력값이 없으면 메시지 출력
+                  if (value.isEmpty) {
+                    return 'Enter your Weight';
+                  } else
+                    return null;
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText:'Your Weight',
