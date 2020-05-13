@@ -45,6 +45,13 @@ class _WeightCheckState extends State<WeightCheck> {
           child:Column(
             children: <Widget>[
               TextFormField(
+                validator: (value) {
+                  // 입력값이 없으면 메시지 출력
+                  if (value.isEmpty) {
+                    return 'Enter some text';
+                  } else
+                    return null;
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText:'Your Height',
@@ -68,12 +75,14 @@ class _WeightCheckState extends State<WeightCheck> {
                 child: RaisedButton(
                   child: Text('Validation'),
                   onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WcResult(),
-                      ),
-                    );
+                    if (_formKey.currentState.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WcResult(),
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
